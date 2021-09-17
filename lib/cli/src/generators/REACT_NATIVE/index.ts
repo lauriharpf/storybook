@@ -8,7 +8,6 @@ import { GeneratorOptions } from '../baseGenerator';
 const generator = async (
   packageManager: JsPackageManager,
   npmOptions: NpmOptions,
-  installServer: boolean,
   options: GeneratorOptions
 ): Promise<void> => {
   // set correct project name on entry files if possible
@@ -35,39 +34,32 @@ const generator = async (
     !packageJson.dependencies['react-dom'] && !packageJson.devDependencies['react-dom'];
   const reactVersion = packageJson.dependencies.react;
 
-  // should resolve to latest 5.3 version, this is required until react-native storybook supports v6
-  const webAddonsV5 = [
-    '@storybook/addon-links@^5.3',
-    '@storybook/addon-knobs@^5.3',
-    '@storybook/addon-actions@^5.3',
+  const webAddons = ['@storybook/addon-actions@^6', '@storybook/addon-controls@^6'];
+
+  const nativeAddons = [
+    '@storybook/addon-ondevice-controls@next',
+    '@storybook/addon-ondevice-actions@next',
+    '@storybook/addon-ondevice-backgrounds@next',
+    '@storybook/addon-ondevice-notes@next',
   ];
-
-  const nativeAddons = ['@storybook/addon-ondevice-knobs', '@storybook/addon-ondevice-actions'];
-
-  const packagesToResolve = [
-    ...nativeAddons,
-    '@storybook/react-native',
-    installServer && '@storybook/react-native-server',
-  ].filter(Boolean);
-
-  const resolvedPackages = await packageManager.getVersionedPackages(...packagesToResolve);
+  const otherDependencies = [
+    '@react-native-async-storage/async-storage@^1',
+    '@react-native-community/datetimepicker@^3',
+    '@react-native-community/slider@^4',
+  ];
 
   const babelDependencies = await getBabelDependencies(packageManager, packageJson);
 
   const packages = [
     ...babelDependencies,
-    ...resolvedPackages,
-    ...webAddonsV5,
+    ...nativeAddons,
+    '@storybook/react-native@next',
+    ...otherDependencies,
+    ...webAddons,
     missingReactDom && reactVersion && `react-dom@${reactVersion}`,
   ].filter(Boolean);
 
   packageManager.addDependencies({ ...npmOptions, packageJson }, packages);
-
-  if (installServer) {
-    packageManager.addStorybookCommandInScripts({
-      port: 7007,
-    });
-  }
 
   copyTemplate(__dirname, options.storyFormat);
 };

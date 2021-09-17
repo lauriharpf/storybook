@@ -8793,6 +8793,7 @@ __metadata:
     mocha-list-tests: ^1.0.5
     node-cleanup: ^2.1.2
     node-fetch: ^2.6.1
+    node-gyp: ^8.2.0
     npmlog: ^4.1.2
     p-limit: ^3.1.0
     postcss-loader: ^4.2.0
@@ -24638,6 +24639,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"graceful-fs@npm:^4.2.6":
+  version: 4.2.8
+  resolution: "graceful-fs@npm:4.2.8"
+  checksum: 68365485460f7d2e95c05c1b7aeee935349f3b7776488d5bd95a45d8a45bd4977442e88cbbdb4ea01bc72f49f01f75d83f049069774ac8cc4328af4bcff1c542
+  languageName: node
+  linkType: hard
+
 "graceful-readlink@npm:>= 1.0.0":
   version: 1.0.1
   resolution: "graceful-readlink@npm:1.0.1"
@@ -30913,7 +30921,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"make-fetch-happen@npm:^8.0.9":
+"make-fetch-happen@npm:^8.0.14, make-fetch-happen@npm:^8.0.9":
   version: 8.0.14
   resolution: "make-fetch-happen@npm:8.0.14"
   dependencies:
@@ -32479,6 +32487,26 @@ fsevents@^1.2.7:
   bin:
     node-gyp: bin/node-gyp.js
   checksum: 2fe78d02fb152c8f5a59c9b0a558cbc5beb7f574c25646d4cfdbb62eaa36f3b43ebc585d7b53df84ef4eff5c5b4ad0a2b5a37c09816ac11f61a3bdcedd82df04
+  languageName: node
+  linkType: hard
+
+"node-gyp@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "node-gyp@npm:8.2.0"
+  dependencies:
+    env-paths: ^2.2.0
+    glob: ^7.1.4
+    graceful-fs: ^4.2.6
+    make-fetch-happen: ^8.0.14
+    nopt: ^5.0.0
+    npmlog: ^4.1.2
+    rimraf: ^3.0.2
+    semver: ^7.3.5
+    tar: ^6.1.2
+    which: ^2.0.2
+  bin:
+    node-gyp: bin/node-gyp.js
+  checksum: b189934c51ebf42a9ad8a61f57ca00fa6cd5bb3d8aa2d663f14af597a01691106a594f5775d055636fc1185b4252c61ef6e6d61139367924e9deca557195b79e
   languageName: node
   linkType: hard
 
@@ -42413,6 +42441,20 @@ resolve@1.19.0:
     mkdirp: ^1.0.3
     yallist: ^4.0.0
   checksum: f28341501670556f5dced0a987205b1e408785ec296e60d5297ea155df18a55b7f5a20a538631791c11e5863677cc2911a2d861acb950b11e7f25fe95dd4aed2
+  languageName: node
+  linkType: hard
+
+"tar@npm:^6.1.2":
+  version: 6.1.11
+  resolution: "tar@npm:6.1.11"
+  dependencies:
+    chownr: ^2.0.0
+    fs-minipass: ^2.0.0
+    minipass: ^3.0.0
+    minizlib: ^2.1.1
+    mkdirp: ^1.0.3
+    yallist: ^4.0.0
+  checksum: 5a016f5330f43815420797b87ade578e2ea60affd47439c988a3fc8f7bb6b36450d627c31ba6a839346fae248b4c8c12bb06bb0716211f37476838c7eff91f05
   languageName: node
   linkType: hard
 
