@@ -102,9 +102,6 @@
   "resolutions": {
     "serialize-javascript": "^3.1.0"
   },
-  "dependencies": {
-    "node-gyp": "^8.2.0"
-  },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -251,6 +248,7 @@
     "mocha-list-tests": "^1.0.5",
     "node-cleanup": "^2.1.2",
     "node-fetch": "^2.6.1",
+    "node-gyp": "^8.2.0",
     "npmlog": "^4.1.2",
     "p-limit": "^3.1.0",
     "postcss-loader": "^4.2.0",
